@@ -16,6 +16,7 @@ namespace eShopConContainers.WebSPA
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
              .UseStartup<Startup>()
+            .UseUrls("http://localhost:5104/") //added by me
                 .UseHealthChecks("/hc")
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .ConfigureAppConfiguration((builderContext, config) =>

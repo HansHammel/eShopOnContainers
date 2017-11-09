@@ -18,6 +18,7 @@ namespace Microsoft.eShopOnContainers.WebMVC
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseHealthChecks("/hc")
                 .UseStartup<Startup>()
+                .UseUrls("http://localhost:5100/") //added by me
                 .ConfigureAppConfiguration((builderContext, config) =>
                 {
                     config.AddEnvironmentVariables();
