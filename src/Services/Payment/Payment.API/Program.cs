@@ -29,6 +29,7 @@ namespace Payment.API
                     builder.AddConsole();
                     builder.AddDebug();
                 })
+                .UseUrls("http://localhost:5109/") //added by me
                 .UseApplicationInsights()
                 .Build();
     }

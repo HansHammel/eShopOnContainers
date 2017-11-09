@@ -90,6 +90,16 @@ namespace eShopConContainers.WebSPA
                 app.UseDeveloperExceptionPage();
             }
 
+            // TODO: CSP is unsave, add middleware https://www.codeproject.com/Articles/1205746/Using-CSP-Header-in-ASP-NET-Core
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers.Add(
+                    "Content-Security-Policy",
+                    "default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; img-src * data: 'unsafe-inline'; connect-src * 'unsafe-inline'; frame-src *;");
+
+                await next();
+            });
+
             // Configure XSRF middleware, This pattern is for SPA style applications where XSRF token is added on Index page 
             // load and passed back token on every subsequent async request            
             // app.Use(async (context, next) =>

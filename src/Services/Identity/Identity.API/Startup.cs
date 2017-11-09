@@ -141,9 +141,20 @@ namespace Microsoft.eShopOnContainers.Services.Identity.API
 
 
             // Make work identity server redirections in Edge and lastest versions of browers. WARN: Not valid in a production environment.
+            /*
             app.Use(async (context, next) =>
             {
                 context.Response.Headers.Add("Content-Security-Policy", "script-src 'unsafe-inline'");
+                await next();
+            });
+            */
+            // TODO: CSP is unsave, add middleware https://www.codeproject.com/Articles/1205746/Using-CSP-Header-in-ASP-NET-Core
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers.Add(
+                    "Content-Security-Policy",
+                    "default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; img-src * data: 'unsafe-inline'; connect-src * 'unsafe-inline'; frame-src *;");
+
                 await next();
             });
 
