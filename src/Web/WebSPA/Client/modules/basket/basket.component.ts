@@ -46,15 +46,16 @@ export class BasketComponent implements OnInit {
         return setBasketObservable;
     }
 
+    //fixed some crap here
     checkOut(event: any) {
         this.update(event)
             .subscribe(
-                x => {
-                    this.errorMessages = [];
-                    this.basketwrapper.basket = this.basket;
-                    this.router.navigate(['order'],
-                errMessage => this.errorMessages = errMessage.messages);
-        });
+            x => {
+                this.errorMessages = [];
+                this.basketwrapper.basket = this.basket;
+                this.router.navigate(['order']);
+            },
+            errMessage => this.errorMessages = errMessage.messages);
     }
 
     private calculateTotalPrice() {

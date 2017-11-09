@@ -9,9 +9,10 @@
              xmlns:behaviors="clr-namespace:eShopOnContainers.Core.Behaviors;assembly=eShopOnContainers.Core"
 			 viewModelBase:ViewModelLocator.AutoWireViewModel="true">
     <ContentPage.Title>
-        <OnPlatform x:TypeArguments="x:String">
-            <On Platform="iOS, UWP, WinRT, WinPhone" Value="eShop on Containers" />
-        </OnPlatform>
+        <OnPlatform
+            x:TypeArguments="x:String"
+            iOS="eShop on Containers"
+            WinPhone="eShop on Containers"/>
     </ContentPage.Title>
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -178,10 +179,10 @@
                   Style="{StaticResource HeaderLabelStyle}" />
                 <Entry Text="{Binding UserName.Value, Mode=TwoWay}">
 					<Entry.Style>
-                        <OnPlatform x:TypeArguments="Style">
-                            <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
-                            <On Platform="UWP, WinRT, WinPhone" Value="{StaticResource UwpEntryStyle}" />
-                        </OnPlatform>
+                        <OnPlatform x:TypeArguments="Style"
+                          iOS="{StaticResource EntryStyle}"
+                          Android="{StaticResource EntryStyle}"
+                          WinPhone="{StaticResource UwpEntryStyle}"/>
                     </Entry.Style>
                     <Entry.Behaviors>
 						<behaviors:EventToCommandBehavior
@@ -207,10 +208,10 @@
                   IsPassword="True"
                   Text="{Binding Password.Value, Mode=TwoWay}">
                     <Entry.Style>
-                        <OnPlatform x:TypeArguments="Style">
-                            <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
-                            <On Platform="UWP, WinRT, WinPhone" Value="{StaticResource UwpEntryStyle}" />
-                        </OnPlatform>
+                        <OnPlatform x:TypeArguments="Style"
+                          iOS="{StaticResource EntryStyle}"
+                          Android="{StaticResource EntryStyle}"
+                          WinPhone="{StaticResource UwpEntryStyle}"/>
                     </Entry.Style>
 					<Entry.Behaviors>
 						<behaviors:EventToCommandBehavior
@@ -269,10 +270,11 @@
                 Grid.ColumnSpan="3"
                 Aspect="AspectFill">
                 <Image.Source>
-                    <OnPlatform x:TypeArguments="ImageSource">
-                        <On Platform="iOS, Android" Value="banner.png" />
-                        <On Platform="UWP, WinRT, WinPhone" Value="Assets\banner.png" />
-                    </OnPlatform>
+                    <OnPlatform
+                        x:TypeArguments="ImageSource"
+                        Android="banner.png"
+                        iOS="banner.png"
+                        WinPhone="Assets\banner.png"/>
                 </Image.Source>
             </Image>
             <Grid
@@ -317,10 +319,11 @@
                 <Image
                     Style="{StaticResource SettingsImageStyle}">
                     <Image.Source>
-                        <OnPlatform x:TypeArguments="ImageSource">
-                            <On Platform="iOS, Android" Value="app_settings" />
-                            <On Platform="UWP, WinRT, WinPhone" Value="Assets/app_settings.png" />
-                        </OnPlatform>
+                        <OnPlatform 
+                            x:TypeArguments="ImageSource"
+                            WinPhone="Assets/app_settings.png"
+                            Android="app_settings"
+                            iOS="app_settings"/>
                     </Image.Source>
                 </Image>
                 <Grid.GestureRecognizers>
@@ -342,22 +345,24 @@
                   AbsoluteLayout.LayoutFlags="All">
                     <WebView.Behaviors>
                         <OnPlatform x:TypeArguments="Behavior">
-                            <On Platform="iOS, Android">
-                                <On.Value>
-                                    <behaviors:EventToCommandBehavior 
-                                        EventName="Navigating"
-                                        EventArgsConverter="{StaticResource WebNavigatingEventArgsConverter}"
-                                        Command="{Binding NavigateCommand}" />
-                                </On.Value>
-                            </On>
-                            <On Platform="UWP">
-                                <On.Value>
-                                    <behaviors:EventToCommandBehavior 
-                                        EventName="Navigated"
-                                        EventArgsConverter="{StaticResource WebNavigatedEventArgsConverter}"
-                                        Command="{Binding NavigateCommand}" />
-                                </On.Value>
-                            </On>
+                            <OnPlatform.Android>
+                                <behaviors:EventToCommandBehavior
+							        EventName="Navigating"
+							        EventArgsConverter="{StaticResource WebNavigatingEventArgsConverter}"
+							        Command="{Binding NavigateCommand}" />
+                            </OnPlatform.Android>
+                            <OnPlatform.iOS>
+                                <behaviors:EventToCommandBehavior
+							        EventName="Navigating"
+							        EventArgsConverter="{StaticResource WebNavigatingEventArgsConverter}"
+							        Command="{Binding NavigateCommand}" />
+                            </OnPlatform.iOS>
+                            <OnPlatform.WinPhone>
+                                <behaviors:EventToCommandBehavior
+							        EventName="Navigated"
+							        EventArgsConverter="{StaticResource WebNavigatedEventArgsConverter}"
+							        Command="{Binding NavigateCommand}" />
+                            </OnPlatform.WinPhone>
                         </OnPlatform>
                     </WebView.Behaviors>
                 </WebView>
@@ -371,10 +376,11 @@
           VerticalOptions="Center"
           HorizontalOptions="Center">
             <ActivityIndicator.WidthRequest>
-                <OnPlatform x:TypeArguments="x:Double">
-                    <On Platform="iOS, Android" Value="100" />
-                    <On Platform="UWP, WinRT, WinPhone" Value="400" />
-                </OnPlatform>
+                <OnPlatform   
+                  x:TypeArguments="x:Double"
+                  iOS="100"
+                  Android="100"
+                  WinPhone="400" />
             </ActivityIndicator.WidthRequest>
         </ActivityIndicator>
     </Grid>

@@ -161,7 +161,9 @@
                 {
                     var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
 
-
+                    var factory = new ConnectionFactory();
+                    factory.Uri = new Uri(Configuration["EventBusConnection"]);
+                    /*
                     var factory = new ConnectionFactory()
                     {
                         HostName = Configuration["EventBusConnection"]
@@ -176,6 +178,7 @@
                     {
                         factory.Password = Configuration["EventBusPassword"];
                     }
+                    */
 
                     var retryCount = 5;
                     if (!string.IsNullOrEmpty(Configuration["EventBusRetryCount"]))

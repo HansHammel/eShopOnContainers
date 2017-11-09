@@ -44,10 +44,11 @@
             <!-- ANDROID -->
             <Grid>
                 <Grid.IsVisible>
-                    <OnPlatform x:TypeArguments="x:Boolean">
-                        <On Platform="iOS, Android" Value="True" />
-                        <On Platform="UWP, WinRT, WinPhone" Value="False" />
-                    </OnPlatform>
+                    <OnPlatform         
+                        x:TypeArguments="x:Boolean"
+                        Android="True"
+                        iOS="True"
+                        WinPhone="False"/>
                 </Grid.IsVisible>
                 <BoxView  
                     BackgroundColor="{StaticResource LightGreenColor}"
@@ -63,10 +64,11 @@
             <!-- IOS & UWP -->
             <Grid>
                 <Grid.IsVisible>
-                    <OnPlatform x:TypeArguments="x:Boolean">
-                        <On Platform="iOS, Android" Value="False" />
-                        <On Platform="UWP, WinRT, WinPhone" Value="True" />
-                    </OnPlatform>
+                    <OnPlatform         
+                        x:TypeArguments="x:Boolean"
+                        Android="False"
+                        iOS="False"
+                        WinPhone="True"/>
                 </Grid.IsVisible>
                 <Image
                     Source="Assets\circle_button_background.png"

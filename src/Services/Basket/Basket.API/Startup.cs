@@ -103,11 +103,18 @@ namespace Microsoft.eShopOnContainers.Services.Basket.API
                 {
                     var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
 
-                    var factory = new ConnectionFactory()
+                    /*
+                    //unneccessary
+                    var factory = new ConnectionFactory()  
                     {
                         HostName = Configuration["EventBusConnection"]
                     };
+                    */
 
+                    var factory = new ConnectionFactory();
+                    factory.Uri = new Uri(Configuration["EventBusConnection"]);
+
+                    /*
                     if (!string.IsNullOrEmpty(Configuration["EventBusUserName"]))
                     {
                         factory.UserName = Configuration["EventBusUserName"];
@@ -117,6 +124,7 @@ namespace Microsoft.eShopOnContainers.Services.Basket.API
                     {
                         factory.Password = Configuration["EventBusPassword"];
                     }
+                    */
 
                     var retryCount = 5;
                     if (!string.IsNullOrEmpty(Configuration["EventBusRetryCount"]))
