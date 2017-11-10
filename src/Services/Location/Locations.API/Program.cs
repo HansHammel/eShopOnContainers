@@ -19,7 +19,7 @@ namespace Microsoft.eShopOnContainers.Services.Locations.API
                 .UseHealthChecks("/hc")
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()
-                .UseUrls("http://localhost:5108") //added by me
+                .UseUrls("http://localhost:5109") //added by me
                 .ConfigureAppConfiguration((builderContext, config) =>
                 {
                     config.AddEnvironmentVariables();

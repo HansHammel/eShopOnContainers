@@ -8,7 +8,7 @@ using Xunit;
 // associated with an assembly.
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("UnitTest")]
+[assembly: AssemblyProduct("FunctionalTests")]
 [assembly: AssemblyTrademark("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
@@ -17,5 +17,5 @@ using Xunit;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("7796f5d8-31fc-45a4-b673-19de5ba194cf")]
+[assembly: Guid("d72b942b-0667-4bb4-8b54-40c0d9120241")]
 [assembly: CollectionBehavior(DisableTestParallelization = true)]
